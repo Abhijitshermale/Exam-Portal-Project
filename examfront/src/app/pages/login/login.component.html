@@ -1,0 +1,59 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt20" >
+        <mat-card class="pd10">
+          <div class="container text-center">
+            <img
+              class="logo-style"
+              src="../../../assets/Logo.ico"
+              alt="Exam Portal"
+            />
+          </div>
+          <h1 class="text-center">Login Here !!</h1>
+          <form (ngSubmit)="formSubmit()">
+            <!-- Username Field -->
+            <mat-form-field class="full-width " appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input
+                [(ngModel)]="loginData.email"
+                required
+                name="userName"
+                matInput
+                placeholder="Enter Here"
+              />
+              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+              <mat-hint>Valid Username</mat-hint>
+            </mat-form-field>
+
+            <!-- password field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>User Password</mat-label>
+              <input
+                [(ngModel)]="loginData.password"
+                required
+                type="password"
+                name="password"
+                matInput
+                placeholder="Enter Password"
+              />
+              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+
+            <div class="container text-center">
+              <!-- Register button -->
+              <button type="submit" mat-raised-button color="primary">
+                Login
+              </button>
+              <!-- Clear button -->
+              <button class="ml20" mat-raised-button color="accent">
+                Reset
+              </button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

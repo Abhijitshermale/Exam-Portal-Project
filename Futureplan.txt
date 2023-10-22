@@ -1,0 +1,15 @@
+Register Page Validation
+Login page Validation
+
+
+
+
+frontend - 
+	angular	- components,services,pipes,directives,intercepters,
+
+Backend -
+	SpringBoot - hibernate,jpa,JWT,
+
+Database - 
+	Mysql
+
