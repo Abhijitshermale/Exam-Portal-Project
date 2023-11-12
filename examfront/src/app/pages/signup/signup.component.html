@@ -1,117 +1,168 @@
-<div class="bootstrap-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt20">
-        <mat-card class="pd5">
-          <div class="container text-center">
-            <img
-              class="logo-style"
-              src="../../../assets/Logo.ico"
-              alt="Exam Portal"
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center mb-5">
+      <h2 class="heading-section fontSize50">Register Here !!</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="login-wrap p-0">
+        <h3 class="mb-4 text-center">Don't have an account?</h3>
+        <form [formGroup]="form" (ngSubmit)="formSubmit()" class="signin-form" #myForm="ngForm">
+          <div class="form-group mb-0 mt10">
+            <input
+            formControlName="email"
+              type="email"
+              [(ngModel)]="user.email"
+              name="email"
+              class="form-control"
+              placeholder="Username"
+              required
             />
           </div>
-          <h1 class="text-center">Register Here !!</h1>
-          <form (ngSubmit)="formSubmit()">
-            <!-- Username Field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>User Name</mat-label>
-              <input
-                required
-                required
-                [(ngModel)]="user.email"
-                name="email"
-                matInput
-                placeholder="Enter Here"
-              />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>
-                <mat-hint>{{ userNameHint }}</mat-hint>
-              </mat-hint>
-            </mat-form-field>
+          <div *ngIf="form.get('email').hasError('invalidEmail') && form.get('email').touched" class="ml20 mt5 ">
+            <span class="displayFlex" style="color: black;font-size:x-small;">⚠️ Please enter a valid email address.</span>
+          </div>
+          <div class="form-group mb-0 mt10">
+            <input
+              formControlName="password"
+              id="password-field"
+              type="{{ passwordFieldType }}"
+              class="form-control"
+              placeholder="Password"
+              [(ngModel)]="user.password"
+              required
+              name="password"
+            />
+            <span
+              toggle="#password-field"
+              class="fa fa-fw field-icon toggle-password"
+              [ngClass]="toggleIconClass"
+              (click)="togglePasswordVisibility('password')"
+            ></span>
+          </div>
+          <div *ngIf="form.get('password').hasError('invalidPassword') && form.get('password').touched" class="ml20 mt5 ">
+            <span class="displayFlex" style="color: black; font-size:x-small;">⚠️ Please enter a valid password.</span>
+          </div>
+          <div class="form-group mb-0 mt10">
+            <input
+              formControlName="confirmpass"
+              id="password-field1"
+              type="{{ passwordFieldType1 }}"
+              class="form-control"
+              placeholder="Confirm Password"
+              [(ngModel)]="confirmPassword"
+              required
+              name="confirmPassword"
+            />
+            <span
+              toggle="#password-field1"
+              class="fa fa-fw field-icon toggle-password"
+              [ngClass]="toggleIconClass1"
+              (click)="togglePasswordVisibility('confirm')"
+            ></span>
+          </div>
+          <div *ngIf="(form.get('confirmpass').hasError('passwordsNotMatch') || user.password!=confirmPassword)&& form.get('confirmpass').touched" class="ml20 mt5 ">
+            <span class="displayFlex" style="color: black;font-size:x-small;">⚠️ Passwords do not match.</span>
+          </div>
 
-            <!-- Password Field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>User Password</mat-label>
+          <!-- <div class="form-group d-md-flex">
+            <div class="w-50">
               <input
+                type="text"
+                class="form-control"
+                placeholder="First Name"
                 required
-                required
-                type="password"
-                [(ngModel)]="user.password"
-                name="password"
-                matInput
-                placeholder="Enter Password"
               />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-            <!-- First Name Field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>First Name</mat-label>
+            </div>
+            <div class="w-50 text-md-right">
               <input
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
                 required
-                required
-                [(ngModel)]="user.firstName"
-                name="firstName"
-                matInput
-                placeholder="Enter Here"
               />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-            <!-- Last Name Field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Last Name</mat-label>
-              <input
-                required
-                [(ngModel)]="user.lastName"
-                name="lastName"
-                matInput
-                placeholder="Enter Here"
-              />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-            <!-- email Field -->
-            <!-- <mat-form-field class="full-width" appearance="outline">
-              <mat-label>User Email</mat-label>
-              <input
-                required
-                type="email"
-                [(ngModel)]="user.email"
-                name="email"
-                matInput
-                placeholder="Enter Here"
-              /> -->
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <!-- <mat-hint>Hint</mat-hint>
-            </mat-form-field> -->
-            <!-- phone Field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Phone Number</mat-label>
-              <input
-                required
-                type="number"
-                [(ngModel)]="user.phone"
-                name="phone"
-                matInput
-                placeholder="Enter Here"
-              />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-
-            <div class="container text-center">
-              <!-- Register button -->
-              <button type="submit" mat-raised-button color="primary">
-                Register
+            </div>
+          </div> -->
+          <div class="form-group mb-0 mt10">
+            <input
+              formControlName="firstname"
+              type="text"
+              [(ngModel)]="user.firstName"
+              name="firstName"
+              class="form-control"
+              placeholder="First Name"
+              required
+            />
+          </div>
+          <div *ngIf="form.get('firstname').hasError('required') && form.get('firstname').touched" class="ml20 mt5  ">
+            <span class="displayFlex" style="color: black;font-size:x-small;">⚠️ First Name is required.</span>
+          </div>
+          <div class="form-group mb-0 mt10">
+            <input
+            formControlName="lastname"
+              type="text"
+              [(ngModel)]="user.lastName"
+              name="lastName"
+              class="form-control"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+          <div *ngIf="form.get('lastname').hasError('required') && form.get('lastname').touched" class="ml20 mt5  ">
+            <span class="displayFlex" style="color: black;font-size:x-small;">⚠️ Last Name is required.</span>
+          </div>
+          <div class="form-group mb-0 mt10">
+            <input
+              formControlName="phoneno"
+              type="number"
+              [(ngModel)]="user.phone"
+              name="phone"
+              class="form-control"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <div *ngIf="form.get('phoneno').hasError('invalidPhoneNumber') && form.get('phoneno').touched" class="ml20 mt5  ">
+            <span class="displayFlex" style="color: black;font-size:x-small;">⚠️ Enter valid number.</span>
+          </div>
+          <div class="form-group"></div>
+          <div class="form-group d-md-flex">
+            <div class="w-75 text-md-right">
+              <button
+                type="submit"
+                class="form-control btn btn-primary submit px-3"
+              >
+                Sign Up
               </button>
-              <!-- Clear button -->
-              <button class="ml20" mat-raised-button color="accent">
+            </div>
+            <div class="w-25 text-center ml10">
+              <button
+                (click)="clear()"
+                class="form-control btn btn-primary submit px-3"
+              >
                 Clear
               </button>
             </div>
-          </form>
-        </mat-card>
+          </div>
+          <div class="form-group d-md-flex">
+            <div class="w-75 text-md-right">
+              <a href="#" style="color: #fff">Have an account ? --> </a>
+            </div>
+            <div class="w-25 text-center">
+              <a [routerLink]="'/login'" style="color: #fff"><u> Sign In</u></a>
+            </div>
+          </div>
+        </form>
+        <!-- <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+        <div class="social d-flex text-center">
+          <a href="#" class="px-2 py-2 mr-md-1 rounded"
+            ><span class="ion-logo-facebook mr-2"></span> Facebook</a
+          >
+          <a href="#" class="px-2 py-2 ml-md-1 rounded"
+            ><span class="ion-logo-twitter mr-2"></span> Twitter</a
+          >
+        </div> -->
       </div>
     </div>
   </div>

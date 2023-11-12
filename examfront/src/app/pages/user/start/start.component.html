@@ -1,0 +1,104 @@
+<div class="bootstrap-wrapper " *ngIf="!isSubmit">
+    <div class="container-fluid mt20">
+        <div class="row">
+            <div class="col-md-2">
+                <!-- instructions -->
+                <mat-card class=" mt50 matBackground fontWhite ">
+                    <mat-card-content>
+                        <h3 class="fontWhite">Instructions</h3>
+                        <ul>
+                            <li>Do not refresh the page otherwise you will get a new questions in this quiz.</li>
+                            <li>Do not switch the tab.</li>
+                            <li>Do not minimize the window.</li>
+                        </ul>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-8">
+                <!-- questions -->
+                <ng-container *ngIf="questions">
+                    <h1 class="fontWhite">On going quiz <b>{{questions[0].quiz.title}}</b></h1>
+                </ng-container>
+                <mat-card *ngFor="let q of questions; let i = index" class="mt10 matBackground fontWhite">
+                    <mat-card-content>
+                        <p class="displayFlex">
+                            <b>Q {{i+1}})</b> <span class="ml10" [innerHTML]="q.content"> </span>
+                        </p>
+                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <div class="row">
+                        <div class="col-md-6 mt10 mb10 d-flex">
+                            <input type="radio" class="ml20" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer" id="radio1"><label for="radio1" class="ml10">{{q.option1}}</label>
+                        </div>
+                        <div class="col-md-6 mt10 mb10 d-flex">
+                            <input type="radio" class="ml20" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer" id="radio2"><label for="radio2" class="ml10">{{q.option2}}</label>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mt10 mb10 d-flex ">
+                            <input mat type="radio" class="ml20" [value]="q.option3" [name]="i" [(ngModel)]="q.givenAnswer" id="radio3"><label for="radio3" class="ml10">{{q.option3}}</label>
+                        </div>
+                        <div class="col-md-6 mt10 mb10 d-flex">
+                            <input type="radio" class="ml20" [value]="q.option4" [name]="i" [(ngModel)]="q.givenAnswer" id="radio4"><label for="radio4" class="ml10">{{q.option4}}</label>
+                        </div>  
+                    </div>
+                </mat-card>
+                <div class="container text-center mt20 mb20">
+                    <button mat-raised-button class="btn btn-primary" (click)="submitQuiz()">Submit Quiz</button>
+                </div>
+            </div>
+            <div class="col-md-2" *ngIf="timer" >
+                    <mat-card class="mt50 matBackground fontWhite">
+                        <mat-card-header>
+                            <mat-card-title>
+                                Progress
+                            </mat-card-title>
+                            <mat-card-subtitle style="color:antiquewhite">
+                                Quiz will automatically submitted when time reaches to <b>0:0</b>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content >
+                            <h1 class="text-center fontWhite"> {{getFormatedTime()}}</h1>
+                            <mat-spinner
+                            color="warn"
+                            mode="determinate"
+                            [value]="(timer / (this.questions.length*2*60))*100" 
+                            class="marginAuto "
+                            ></mat-spinner>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Show the result -->
+<section class="ftco-sections">
+    <div class="container">
+        <div class="bootstrap-wrapper " style="margin-top: 10%; " *ngIf="isSubmit">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <mat-card class="text-center matBackground fontWhite">                
+                            <mat-card-title class="mb20 mt20">
+                                <b>Quiz Result</b>
+                            </mat-card-title>
+                        <mat-divider></mat-divider>
+                        <mat-card-content class="mt10">
+                            <h1 class="fontWhite">Marks Got : {{marksGot}}</h1>
+                            <h1 class="fontWhite">Correct Answer : {{correctAnswers}}</h1>
+                            <h1 class="fontWhite">Attempted Questions : {{attemptedQuestion}}</h1>
+                            <mat-divider></mat-divider>
+                            <button mat-raised-button  class="mt10 ml10 btn btn-primary" (click)="printPage()">
+                                Print
+                            </button>
+                            <button mat-raised-button  class="mt10 ml10 btn btn-primary" [routerLink]="'/user-dashboard/0'">
+                                Home
+                            </button>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

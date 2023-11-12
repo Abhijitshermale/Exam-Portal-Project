@@ -1,59 +1,105 @@
-<div class="bootstrap-wrapper">
+<section class="ftco-section">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt20" >
-        <mat-card class="pd10">
-          <div class="container text-center">
-            <img
-              class="logo-style"
-              src="../../../assets/Logo.ico"
-              alt="Exam Portal"
-            />
-          </div>
-          <h1 class="text-center">Login Here !!</h1>
-          <form (ngSubmit)="formSubmit()">
-            <!-- Username Field -->
-            <mat-form-field class="full-width " appearance="outline">
-              <mat-label>User Name</mat-label>
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section fontSize50">Login</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="login-wrap p-0">
+          <h3 class="mb-4 text-center">Have an account?</h3>
+          <form
+            [formGroup]="form"
+            (ngSubmit)="formSubmit()"
+            class="signin-form"
+          >
+            <div class="form-group mb-0 mt10">
               <input
+                formControlName="email"
+                type="text"
+                class="form-control"
+                placeholder="Username"
                 [(ngModel)]="loginData.email"
                 required
                 name="userName"
-                matInput
-                placeholder="Enter Here"
               />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Valid Username</mat-hint>
-            </mat-form-field>
-
-            <!-- password field -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>User Password</mat-label>
+            </div>
+            <div
+              *ngIf="
+                form.get('email').hasError('invalidEmail') &&
+                form.get('email').touched
+              "
+              class="ml20 mt5"
+            >
+              <span class="displayFlex" style="color: black; font-size: x-small"
+                >⚠️ Please enter a valid email address.</span
+              >
+            </div>
+            <div class="form-group mb-0 mt10">
               <input
+                formControlName="password"
+                id="password-field"
+                type="{{ passwordFieldType }}"
+                class="form-control"
+                placeholder="Password"
                 [(ngModel)]="loginData.password"
                 required
-                type="password"
                 name="password"
-                matInput
-                placeholder="Enter Password"
               />
-              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-              <mat-hint>Hint</mat-hint>
-            </mat-form-field>
-
-            <div class="container text-center">
-              <!-- Register button -->
-              <button type="submit" mat-raised-button color="primary">
-                Login
-              </button>
-              <!-- Clear button -->
-              <button class="ml20" mat-raised-button color="accent">
-                Reset
+              <span
+                toggle="#password-field"
+                class="fa fa-fw field-icon toggle-password"
+                [ngClass]="toggleIconClass"
+                (click)="togglePasswordVisibility()"
+              ></span>
+            </div>
+            <div
+              *ngIf="
+                form.get('password').hasError('invalidPassword') &&
+                form.get('password').touched
+              "
+              class="ml20 mt5"
+            >
+              <span class="displayFlex" style="color: black; font-size: x-small"
+                >⚠️ Please enter a valid password.</span
+              >
+            </div>
+            <div class="form-group mt10">
+              <button
+                type="submit"
+                class="form-control btn btn-primary submit px-3"
+              >
+                Sign In
               </button>
             </div>
+            <div class="form-group d-md-flex">
+              <div class="w-75 text-md-right">
+                <a href="#" style="color: #fff">Dont Have an account ? --> </a>
+              </div>
+              <div class="w-25 text-center">
+                <a [routerLink]="'/signup'" style="color: #fff"
+                  ><u> Sign Up</u></a
+                >
+              </div>
+            </div>
+            <div class="form-group d-md-flex">
+              <div class="w-100 text-md-right">
+                <a href="#" style="color: #fff"><u>Forgot Password</u></a>
+              </div>
+            </div>
           </form>
-        </mat-card>
+          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+          <div class="social d-flex text-center">
+            <a href="#" class="px-2 py-2 mr-md-1 rounded"
+              ><span class="ion-logo-facebook mr-2"></span> Facebook</a
+            >
+            <a href="#" class="px-2 py-2 ml-md-1 rounded"
+              ><span class="ion-logo-twitter mr-2"></span> Twitter</a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

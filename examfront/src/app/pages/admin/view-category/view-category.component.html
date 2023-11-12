@@ -1,0 +1,28 @@
+
+<!-- <mat-card>
+    <div mat-subheader>
+            
+    </div>
+    
+</mat-card> -->
+
+<ol style="--length: {{categories.length}}" role="list">
+    <h1 class="fontWhite">All Categories</h1>
+    <div *ngFor="let c of categories; index as i">
+        <li style="--i: {{i+1}}">
+            <h3>{{c.title}}</h3>
+            <p class="fontWhite">{{c.description}}</p>
+            <div class="text-end">
+                <button mat-raised-button class="btn btn-primary " (click)="deleteCategory(c.cid)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-raised-button class="btn btn-primary ml10" [routerLink]="'/admin/category/'+c.cid" >
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </li>
+    </div>
+    <div class="container text-center mt20">
+        <button routerLink="/admin/add-category" mat-raised-button class="btn btn-primary">Add New Category</button>
+    </div>
+</ol>

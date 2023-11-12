@@ -1,7 +1,7 @@
-<mat-card>
+<!-- <mat-card >
     <mat-action-list>
         <div mat-subheader>Menu</div>
-        <button mat-list-item>
+        <button mat-list-item routerLink="/admin">
             <mat-icon mat-list-icon>
                 home
             </mat-icon>
@@ -17,5 +17,105 @@
                 Profile
             </span>
         </button>
+        <button mat-list-item   >   
+            <mat-icon mat-list-icon>
+                list
+            </mat-icon>
+            <span style="display: table-caption;">
+                Categories
+            </span>
+        </button>
+        <button mat-list-item routerLink="/admin/add-category">   
+            <mat-icon mat-list-icon>
+                add_circle_outline
+            </mat-icon>
+            <span style="display: table-caption;">
+                Add Categories
+            </span>
+        </button>
+        <button mat-list-item routerLink="/admin/quizzes">   
+            <mat-icon mat-list-icon>
+                book
+            </mat-icon>
+            <span style="display: table-caption;">
+                Quizzes
+            </span>
+        </button>
+        <button mat-list-item routerLink="/admin/add-quizzes">   
+            <mat-icon mat-list-icon>
+                add
+            </mat-icon>
+            <span style="display: table-caption;">
+                Add Quizzes
+            </span>
+        </button>
+        <button mat-list-item routerLink="profile">   
+            <mat-icon mat-list-icon>
+                logout
+            </mat-icon>
+            <span style="display: table-caption;">
+                Logout
+            </span>
+        </button>
     </mat-action-list>
-</mat-card>
+</mat-card> -->
+
+
+<div class="bootstrap-wrapper fontWhite mt100">
+    <div class="container-fluid ">
+        <div class="row mt10" >
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="form-group d-md-flex">
+                    <div class="w-50 mrl10 ">
+                        <mat-card class="mb20 matBackground text-center ">
+                            <mat-card-content routerLink="categories">
+                                <img src="/assets/category-icon-png-14.png" alt="Category" style="filter: brightness(0) invert(1);height: 100px;">
+                            </mat-card-content>
+                            <div class="text-center">
+                                <h1 class="fontWhite">Category</h1>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="w-50 ml20 text-md-right">
+                        <mat-card class="mb20 matBackground text-center" routerLink="/admin/add-category">
+                            <mat-card-content>
+                                <img src="/assets/addcategory.png" alt="Category" style="filter: brightness(0) invert(1); height: 100px;">
+                            </mat-card-content>
+                            <div class="text-center" >
+                                <h1 class="fontWhite">Add Category</h1>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class="form-group d-md-flex">
+                    <div class="w-50 ">
+                        <mat-card class="mb20 matBackground text-center" routerLink="/admin/quizzes">
+                            <mat-card-content>
+                                <img src="/assets/quizz.png" alt="Category" style="filter: brightness(0) invert(1); height: 100px;">
+                            </mat-card-content>
+                            <div class="text-center" >
+                                <h1 class="fontWhite" >Quiz</h1>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="w-50 ml20 text-md-right">
+                        <mat-card class="mb20 matBackground text-center " routerLink="/admin/add-quizzes">
+                            <mat-card-content>
+                                <img src="/assets/addQuiz.png" alt="Category" style="filter: brightness(0) invert(1);height: 100px;">
+                            </mat-card-content>
+                            <div class="text-center" >
+                                <h1 class="fontWhite" >Add Quiz</h1>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+            <div class="com-md-3">
+
+            </div>
+        </div>
+    </div>
+</div>

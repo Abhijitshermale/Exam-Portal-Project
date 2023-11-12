@@ -12,8 +12,8 @@ import com.jwt.example.models.JwtRequest;
 import com.jwt.example.models.JwtResponse;
 import com.jwt.example.models.RefreshTokenRequest;
 import com.jwt.example.security.JwtHelper;
-import com.jwt.example.services.RefreshTokenService;
-import com.jwt.example.services.UserService;
+import com.jwt.example.services.impl.RefreshTokenService;
+import com.jwt.example.services.impl.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,7 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping("/auth")
 public class AuthController {
     

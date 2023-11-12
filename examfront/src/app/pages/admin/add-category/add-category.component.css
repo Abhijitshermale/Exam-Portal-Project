@@ -1,0 +1,11 @@
+.w100{
+  width: 100%;
+}
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white !important;
+}
+/* Font color */
+input.mat-input-element {
+  color: white !important;
+}

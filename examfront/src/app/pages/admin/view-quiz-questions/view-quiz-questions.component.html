@@ -1,0 +1,51 @@
+<ol style="--length: {{questions.length}}" role="list">
+    <h1>Question of {{qTitle}}</h1>
+    
+    <div *ngFor="let q of questions; index as i">
+        <li style="--i: {{i+1}}">
+            <div class="row mb20">
+                <div class="col-md-1">
+                    <h3 class="roundbox ">{{i+1}}</h3>
+                </div>
+                <div class="col-md-11 mt10">
+                    
+                    <h2 class="fontWhite" [innerHTML]="q?.content"></h2>
+                </div>
+            </div>
+            
+
+            <div class="container-fluid mb20">
+                <div class="row mb20">
+                    <div class="col-md-6">
+                        <p>{{q.option1}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{q.option2}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>{{q.option3}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{q.option4}}</p>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <p class="mt20 mb20">
+                <b>Correct answer : {{q.answer}}</b>
+            </p>
+            <mat-card-action class="w100 mt20" >
+                <button class="btn btn-primary" [routerLink]="'/admin/question/'+q.quesId"><mat-icon>edit</mat-icon></button>
+                <button class="ml20 btn btn-primary" (click)="deleteQuestion(q.quesId)"><mat-icon>delete</mat-icon></button>
+            </mat-card-action>
+        </li>
+    </div>
+    <div class="container text-center">
+        <button class="btn btn-primary" [routerLink]="'/admin/add-question/'+qId+'/'+qTitle">Add Question</button>
+    </div>
+    <!-- <div class="container text-center mt20">
+        <button routerLink="/admin/add-quizzes" class="btn btn-primary">Add New Quizz</button>
+    </div> -->
+</ol>

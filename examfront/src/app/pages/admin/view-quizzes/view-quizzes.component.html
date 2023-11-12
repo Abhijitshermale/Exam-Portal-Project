@@ -1,0 +1,22 @@
+<ol style="--length: {{quizzes.length}}" role="list">
+    <h1>All Quizzes</h1>
+    <div *ngFor="let c of quizzes; index as i">
+        <li style="--i: {{i+1}}">
+            <h3>{{c?.title}}
+            </h3>
+            <p class="mb20 fontWhite" style="font-size: large;"><b style="color:black">Category : </b>{{c?.category.title}}</p>
+
+            <p class="fontWhite">{{c?.description}}</p>
+
+            <button [routerLink]="'/admin/view-questions/'+c.qid+'/'+c.title"   class="mt10 btn btn-primary">Questions</button>
+            <button mat-stroked-button color="black" class="mt10 ml10 btn btn-primary"><b >Maximum Marks : </b>{{c?.maxMarks}}</button>
+            <button mat-stroked-button color="black" class="mt10 ml10 btn btn-primary"><b >Number Of Questions : </b>{{c?.numberOfQuestions}}</button>
+            <button mat-stroked-button color="black" class="mt10 ml10  btn btn-primary"><b>Attempts :</b></button>
+            <button mat-stroked-button class="mt10 ml10 cardColor" [routerLink]="'/admin/quiz/'+c.qid" ><mat-icon>edit</mat-icon></button>
+            <button mat-stroked-button class="mt10 ml5 cardColor" (click)="deleteQuiz(c.qid)"><mat-icon>delete</mat-icon></button>
+        </li>
+    </div>
+    <div class="container text-center mt20">
+        <button routerLink="/admin/add-quizzes" class="btn btn-primary" >Add New Quizz</button>
+    </div>
+</ol>

@@ -1,2 +1,72 @@
-<p>profile works!</p>
-<h2>profile component</h2>
+<div class="bootstrap-wrapper " >
+    <div class="container-fluid mt20">
+        <div class="row">
+            <div class="col-md-2">
+                
+            </div>
+            <div class="col-md-8">
+                <mat-card *ngIf="user" class="matBackground ">
+                    <h1 class="mt20 ml20 fontWhite">Your Profile Details</h1>
+                    <mat-card-content>
+                        <div class="bootstrap-wrapper">
+                            <div class="container">
+                                <div class="container text-center">
+                                    <img 
+                                    src="../../../assets/default profile.jpg" 
+                                    alt=""
+                                    class="profile-image">
+                                    <h1 class="mt20 fontWhite">{{user?.firstName}}{{user?.lastName}}</h1>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <!-- table details -->
+                                        <table class="table text-center">
+                                            <tr>
+                                                <td class="fontWhite">Email</td>
+                                                <td class="fontWhite">{{user?.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fontWhite">Id</td>
+                                                <td class="fontWhite">EXAM{{user?.id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fontWhite">Phone</td>
+                                                <td class="fontWhite">{{user?.phone}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fontWhite">Role</td>
+                                                <td class="fontWhite">{{user?.authorities[0].authority}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fontWhite">Status</td>
+                                                <td class="fontWhite">{{user.enabled?'Active':"Inactive"}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions class="for-button-allignment">
+                        <button class="btn btn-primary" style="text-transform: none;">Update</button>
+                        <button  class="ml20 btn btn-primary" style="text-transform: none;">Share</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div class="col-md-2"  >
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
